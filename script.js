@@ -1,4 +1,5 @@
 const allButtons = document.querySelectorAll("button")
+const allLists = document.querySelectorAll("ul");
 
 allButtons.forEach((btn) => {
   btn.addEventListener('click', openList);
@@ -26,4 +27,13 @@ window.addEventListener('click', (e) => {
       ul.style.display = "none"
     })
   }
+});
+
+allLists.forEach((ul) => {
+  ul.addEventListener('click', (event) => {
+    const selectedItem = event.target.textContent; // Obtém o texto do item clicado
+    const button = ul.previousElementSibling; // Seleciona o botão associado à lista
+    button.textContent = selectedItem; // Atualiza o texto do botão com o item selecionado
+    ul.style.display = 'none'; // Oculta a lista após a seleção do item
+  });
 });
