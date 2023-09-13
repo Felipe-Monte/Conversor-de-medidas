@@ -8,7 +8,7 @@ function openList(btn) {
   const ul = btn.currentTarget.nextElementSibling;
   const preventHiddenDivResult = btn.currentTarget
 
-  if(preventHiddenDivResult .className == "btn_change"){
+  if(preventHiddenDivResult.className == "btn_change"){
     return
   }
 
