@@ -124,3 +124,8 @@ allLists.forEach((ul) => {
   });
 });
 
+const data = 100
+const fromValue = "Centímetro"
+const toValue = "Metro"
+const conversorConst = api[fromValue][toValue];
+console.log(conversorConst * data)
