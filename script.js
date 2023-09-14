@@ -33,6 +33,22 @@ window.addEventListener('click', (e) => {
   }
 });
 
+function temperatureSelected() {
+  const getUl = document.querySelector("#list_unit")
+  const getUl2 = document.querySelector("#list_unit_2")
+
+  getUl.innerHTML = `
+    <li>Kelvin</li>
+    <li>Fahrenheit</li>
+    <li>Celsius</li>
+  `
+  getUl2.innerHTML = `
+    <li>Kelvin</li>
+    <li>Fahrenheit</li>
+    <li>Celsius</li>
+`
+}
+
 function measuresSelected() {
   const getUl = document.querySelector("#list_unit")
   const getUl2 = document.querySelector("#list_unit_2")
@@ -61,24 +77,6 @@ function measuresSelected() {
     <li>Polegada</li>
     <li>Jarda</li>
   `
-  return getUl, getUl2
-}
-
-function temperatureSelected() {
-  const getUl = document.querySelector("#list_unit")
-  const getUl2 = document.querySelector("#list_unit_2")
-
-  getUl.innerHTML = `
-    <li>Kelvin</li>
-    <li>Fahrenheit</li>
-    <li>Celsius</li>
-  `
-  getUl2.innerHTML = `
-    <li>Kelvin</li>
-    <li>Fahrenheit</li>
-    <li>Celsius</li>
-`
-  return getUl, getUl2
 }
 
 function massSelected() {
@@ -103,8 +101,6 @@ function massSelected() {
     <li>Libra</li>
     <li>Onça</li>
   `
-
-  return getUl, getUl2
 }
 
 allLists.forEach((ul) => {
@@ -113,19 +109,51 @@ allLists.forEach((ul) => {
     const button = ul.previousElementSibling; // Seleciona o botão associado à lista
     button.textContent = selectedItem; // Atualiza o texto do botão com o item selecionado
     ul.style.display = 'none'; // Oculta a lista após a seleção do item
-
-    if (buttonSetUnit.textContent === "Temperatura") {
-      temperatureSelected()
-    } else if (buttonSetUnit.textContent === "Massa") {
-      massSelected()
-    } else if (buttonSetUnit.textContent === "Comprimento") {
-      measuresSelected()
-    }
   });
 });
 
-const data = 100
-const fromValue = "Centímetro"
-const toValue = "Metro"
-const conversorConst = api[fromValue][toValue];
-console.log(conversorConst * data)
+
+
+
+const btn1 = document.querySelector("#btn_select_1")
+const btn2 = document.querySelector("#btn_select_2")
+
+// Selecione o botão que você deseja observar
+const button = document.querySelector(".btn_select_option");
+
+// Crie um novo Observador de Mutação
+const observer = new MutationObserver((mutationsList, observer) => {
+  for (const mutation of mutationsList) {
+    if (mutation.type === 'childList' && mutation.target === button) {
+      if (buttonSetUnit.textContent === "Temperatura") {
+        temperatureSelected()
+        btn1.textContent = "Celsius"
+        btn2.textContent = "Fahrenheit"
+      } else if (buttonSetUnit.textContent === "Massa") {
+        massSelected()
+        btn1.textContent = "Grama"
+        btn2.textContent = "Quilograma"
+      } else if (buttonSetUnit.textContent === "Comprimento") {
+        measuresSelected()
+        btn1.textContent = "Centímetro"
+        btn2.textContent = "Metro"
+      }
+    }
+  }
+});
+
+// Configure o Observador de Mutação para observar mudanças no conteúdo do botão
+const config = { childList: true, characterData: true, subtree: true };
+
+// Inicie a observação
+observer.observe(button, config);
+
+
+
+
+
+// const data = 100
+// const fromValue = "Centímetro"
+// const toValue = "Metro"
+// const conversorConst = api[fromValue][toValue];
+// console.log(conversorConst * data)
