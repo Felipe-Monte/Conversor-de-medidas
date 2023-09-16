@@ -109,6 +109,8 @@ allLists.forEach((ul) => {
     const button = ul.previousElementSibling; // Seleciona o botão associado à lista
     button.textContent = selectedItem; // Atualiza o texto do botão com o item selecionado
     ul.style.display = 'none'; // Oculta a lista após a seleção do item
+
+    calc()
   });
 });
 
@@ -166,26 +168,36 @@ inputUser.addEventListener("input", () => {
 })
 
 function calc() {
-  let valueInput = inputUser.value
+  let valueInput = inputUser.value;
 
   if (!valueInput) {
-    return
+    return;
+  }
+
+  const fromValue = btn1.innerText;
+  const toValue = btn2.innerText;
+
+  if (fromValue === toValue) {
+    result.innerHTML = Number(valueInput);
+    return;
   }
 
   if (buttonSetUnit.textContent === "Temperatura") {
-    const data = Number(valueInput)
-    const fromValue = btn1.innerText
-    const toValue = btn2.innerText
+    const data = Number(valueInput);
     const conversorConst = api[fromValue][toValue];
-    let calcTemp = eval(conversorConst.replace('input', data))
-    result.innerHTML = Number(calcTemp)
 
-  } else if (buttonSetUnit.textContent !== "Temperatura") {
-    const data = Number(valueInput)
-    const fromValue = btn1.innerText
-    const toValue = btn2.innerText
+    if (typeof conversorConst === 'string') {
+      let calcTemp = eval(conversorConst.replace('input', data));
+      result.innerHTML = Number(calcTemp);
+    } else {
+      // Lida com casos onde conversorConst não é uma string (ou seja, é um valor de conversão direta)
+      result.innerHTML = conversorConst * data;
+    }
+  } else {
+    const data = Number(valueInput);
     const conversorConst = api[fromValue][toValue];
-    result.innerHTML = conversorConst * data
+    result.innerHTML = conversorConst * data;
   }
 }
+
 
