@@ -148,15 +148,22 @@ const config = { childList: true, characterData: true, subtree: true };
 // Inicie a observação
 observer.observe(button, config);
 
-
+const inputUser = document.querySelector("#input_user")
 const buttonReplace = document.querySelector(".btn_change")
 
 buttonReplace.addEventListener("click", () => {
- [btn1.innerText, btn2.innerText] = [btn2.innerText, btn1.innerText]
+  [btn1.innerText, btn2.innerText] = [btn2.innerText, btn1.innerText]
 })
 
-// const data = 100
-// const fromValue = "Centímetro"
-// const toValue = "Metro"
-// const conversorConst = api[fromValue][toValue];
-// console.log(conversorConst * data)
+inputUser.addEventListener("change", () => {
+  let valueInput = Number(inputUser.value)
+  const data = valueInput
+  const fromValue = Number(btn1.innerText) 
+  const toValue = Number(btn2.innerText) 
+  const conversorConst = api[fromValue][toValue];
+  console.log(conversorConst * data)
+})
+
+
+
+
