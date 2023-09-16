@@ -149,8 +149,11 @@ const config = { childList: true, characterData: true, subtree: true };
 observer.observe(button, config);
 
 
+const buttonReplace = document.querySelector(".btn_change")
 
-
+buttonReplace.addEventListener("click", () => {
+ [btn1.innerText, btn2.innerText] = [btn2.innerText, btn1.innerText]
+})
 
 // const data = 100
 // const fromValue = "Centímetro"
