@@ -115,8 +115,6 @@ allLists.forEach((ul) => {
 });
 
 
-
-
 const btn1 = document.querySelector("#btn_select_1")
 const btn2 = document.querySelector("#btn_select_2")
 
