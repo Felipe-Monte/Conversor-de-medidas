@@ -154,9 +154,15 @@ const result = document.querySelector(".result")
 
 buttonReplace.addEventListener("click", () => {
   [btn1.innerText, btn2.innerText] = [btn2.innerText, btn1.innerText]
+
+  calc()
 })
 
 inputUser.addEventListener("change", () => {
+  calc()
+})
+
+function calc(){
   let valueInput = inputUser.value
 
   if(!valueInput){
@@ -167,10 +173,6 @@ inputUser.addEventListener("change", () => {
   const fromValue = btn1.innerText
   const toValue = btn2.innerText
   const conversorConst = api[fromValue][toValue];
-  console.log(conversorConst * data)
+  console.log(conversorConst)
   result.innerHTML = conversorConst * data
-})
-
-
-
-
+}
