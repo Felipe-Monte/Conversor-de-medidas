@@ -129,14 +129,17 @@ const observer = new MutationObserver((mutationsList, observer) => {
         temperatureSelected()
         btn1.textContent = "Celsius"
         btn2.textContent = "Fahrenheit"
+        calc()
       } else if (buttonSetUnit.textContent === "Massa") {
         massSelected()
         btn1.textContent = "Grama"
         btn2.textContent = "Quilograma"
+        calc()
       } else if (buttonSetUnit.textContent === "Comprimento") {
         measuresSelected()
         btn1.textContent = "Centímetro"
         btn2.textContent = "Metro"
+        calc()
       }
     }
   }
@@ -158,21 +161,31 @@ buttonReplace.addEventListener("click", () => {
   calc()
 })
 
-inputUser.addEventListener("change", () => {
+inputUser.addEventListener("input", () => {
   calc()
 })
 
-function calc(){
+function calc() {
   let valueInput = inputUser.value
 
-  if(!valueInput){
+  if (!valueInput) {
     return
   }
 
-  const data = Number(valueInput)
-  const fromValue = btn1.innerText
-  const toValue = btn2.innerText
-  const conversorConst = api[fromValue][toValue];
-  console.log(conversorConst)
-  result.innerHTML = conversorConst * data
+  if (buttonSetUnit.textContent === "Temperatura") {
+    const data = Number(valueInput)
+    const fromValue = btn1.innerText
+    const toValue = btn2.innerText
+    const conversorConst = api[fromValue][toValue];
+    let calcTemp = eval(conversorConst.replace('input', data))
+    result.innerHTML = Number(calcTemp)
+
+  } else if (buttonSetUnit.textContent !== "Temperatura") {
+    const data = Number(valueInput)
+    const fromValue = btn1.innerText
+    const toValue = btn2.innerText
+    const conversorConst = api[fromValue][toValue];
+    result.innerHTML = conversorConst * data
+  }
 }
+
