@@ -150,18 +150,25 @@ observer.observe(button, config);
 
 const inputUser = document.querySelector("#input_user")
 const buttonReplace = document.querySelector(".btn_change")
+const result = document.querySelector(".result")
 
 buttonReplace.addEventListener("click", () => {
   [btn1.innerText, btn2.innerText] = [btn2.innerText, btn1.innerText]
 })
 
 inputUser.addEventListener("change", () => {
-  let valueInput = Number(inputUser.value)
-  const data = valueInput
-  const fromValue = Number(btn1.innerText) 
-  const toValue = Number(btn2.innerText) 
+  let valueInput = inputUser.value
+
+  if(!valueInput){
+    return
+  }
+
+  const data = Number(valueInput)
+  const fromValue = btn1.innerText
+  const toValue = btn2.innerText
   const conversorConst = api[fromValue][toValue];
   console.log(conversorConst * data)
+  result.innerHTML = conversorConst * data
 })
 
 
