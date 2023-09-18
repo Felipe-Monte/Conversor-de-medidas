@@ -10,6 +10,14 @@ body {
   background: #383f3f;
 }
 
+h1 {
+  text-align: center;
+  padding: 30px;
+
+  color: #e0dfda;
+  font-size: 48px;
+}
+
 div.container {
   width: 450px;
   margin: 80px auto;
@@ -158,4 +166,71 @@ p {
 .result {
   color: #7e7e7e;
   text-align: center;
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 470px) {
+  h1 {
+    text-align: center;
+    padding: 30px;
+  
+    color: #e0dfda;
+    font-size: 26px;
+  }
+  
+  div.container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 470px) {
+  h1 {
+    text-align: center;
+    padding: 30px;
+  
+    color: #e0dfda;
+    font-size: 30px;
+  }
+
+  div.container {
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    text-align: center;
+    padding: 30px;
+  
+    color: #e0dfda;
+    font-size: 30px;
+  }
+
+  div.container {
+    width: 80%;
+    margin: 10px auto;
+    padding: 20px;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    text-align: center;
+    padding: 30px;
+  
+    color: #e0dfda;
+    font-size: 40px;
+  }
+
+  div.container {
+    width: 800px;
+    margin: 20px auto;
+    padding: 50px;
+  }
 }
