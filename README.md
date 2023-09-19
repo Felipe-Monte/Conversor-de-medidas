@@ -28,4 +28,4 @@ Ao digitar um valor no input, o valor é convertido automaticamente logo abaixo.
 https://felipe-monte.github.io/Conversor-de-medidas/
 
 ### Print screen: 
-[alt-text if image link breaks](assets/conversor.JPG)
+![página inicial](assets/conversor.JPG)
